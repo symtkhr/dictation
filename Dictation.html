@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="jquery-2.1.4.js"></script>
+<script src="dictat.js"></script>
+<title>Dictation</title>
+<style>
+span.bef {
+   background-color: #fcc;
+}
+span.aft {
+   background-color: #ccf;
+   color: #ccf;
+}
+.mark span, .ans span {
+   line-height:30px;
+display:inline-block;
+height:30px;
+}
+.mark, .ans, .co {
+font-family:arial; 
+font-size:20pt;
+}
+#point span.emp {
+font-size:20pt;
+font-weight: bold;
+color:red;
+}
+</style>
+</head>
+
+<body>
+    
+  Type precisely what you hear after the following button. <span id="qid"></span><br>
+
+  <input type="button" value="Listen" id="listen" style="font-size:20pt;">
+  (<span id="trial">1</span> / 5)<br>
+  Difficulity = <span id="hard">3</span> :
+  Speed = <span id="speed">100</span> % 
+  <br>
+  <input type="text" id="answer" style="width:100%; font-size:20pt;"><br>
+  <div id="hint"></div>
+
+  <div id="result">
+  [Your Answer]
+  <div class="ans"></div>
+  <span id="input">1</span><br>
+  [Marking]
+  <div class="mark"></div>
+  [Score]
+  <div id="point"> </div>
+  <br/>
+  <div id="ending">
+    [Correct Answer]
+    <div class="co"></div>
+  </div>
+  <input type="button" value="Next" id="next" style="font-size:20pt;">
+  <div id="rank"></div>
+</body></html>
