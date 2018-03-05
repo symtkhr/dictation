@@ -1,61 +1,159 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="pragma" content="no-cache">
-
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script src="jquery-2.1.4.js"></script>
 <script src="dictat.js"></script>
 <title>Dictation</title>
 <style>
-span.bef {
-   background-color: #fcc;
+fieldset.qlist span, #qid {
+   width: 24px;
+   height: 24px;
+   margin: 3px 0;
+   line-height: 24px;
+   text-align: center;
+   border:solid blue 1px;
+   border-radius: 50%;
+   position:relative;
+   display:inline-block;
+   font-size:15px;
+}
+fieldset.qlist span {
+   cursor:pointer;
+}
+fieldset.qlist span:hover, #qid {
+   background-color:#5bf;
+}
+fieldset.qlist span.perfect {
+  color: #0a0;
+  border-color:#0a0;
+  background-color: #5fdd5f;
+}
+fieldset.qlist span .history {
+  top:25px;
+  width:25px;
+  height:10px;
+  text-align:right;
+  position:absolute;
+  background-color:#ffd;
+  font-size:10px;
+  line-height:10px;
+  display:none;
+  border:solid green 1px;
+  border-radius: 5px;
+  padding:2px;
+  z-index:2;
 }
 span.aft {
    background-color: #ccf;
    color: #ccf;
 }
 .mark span, .ans span {
+   display:inline-block;
    line-height:30px;
-display:inline-block;
-height:30px;
+   height:30px;
+   position:relative;
 }
 .mark, .ans, .co {
-font-family:arial; 
-font-size:20pt;
+  font-family:arial; 
+  font-size:20pt;
 }
 #point span.emp {
-font-size:20pt;
-font-weight: bold;
-color:red;
+  font-size:20pt;
+  font-weight: bold;
+  color:red;
+}
+#point span.rate {
+  display:inline-block;
+  font-size:12px;
+  width:30px;
+  text-align:center;
+  height:20px;
+  line-height:20px;
+  border:solid red 1px;
+  border-radius: 10px;
+}
+#point span.rate.fix {
+  background-color: #fca;
+}
+#todo {
+  font-size:20pt;
+  font-weight: bold;
+  color:red;
+  display:inline-block;
+}
+.co span.emp {
+  font-size:15pt;
+  color:red;
+}
+fieldset {
+ border:solid #5a8 1px;
+ border-radius:5px;
+}
+#spectrum {
+  margin-left:20px;
+  display:inline-block;
+  height:20px;
+}
+#spectrum div {
+  width:1px;
+  height:10px;
+  display:inline-block;
+  position:relative;
+}
+#spectrum div span {
+  position:absolute;
+  top:10px; left:-20px; width:40px;
+  font-size:10px;
+  text-align:center;
 }
 </style>
 </head>
 
 <body>
-    
-  Type precisely what you hear after the following button. <span id="qid"></span><br>
-
+<div id="menu">
+  Select a quiz. <div id="spectrum"></div>
+  <hr/>
+  <div id="qoption"></div>
+</div>
+<div id="main">
+  <div style="float:right;">
+    <input type="button" value="Give up" id="giveup">
+  </div>
+  <div>
+    Type precisely what you hear after pressing the following button.
+  </div>
+  <hr/>
+  <span id="qid"></span>: <span id="level">★</span> <br />
   <input type="button" value="Listen" id="listen" style="font-size:20pt;">
-  (<span id="trial">1</span> / 5)<br>
-  Difficulity = <span id="hard">3</span> :
-  Speed = <span id="speed">100</span> % 
-  <br>
+  (<span id="trial">1</span> / 5)
+  Speed = <span id="speed">100</span><input type="text" value="100" style="width:50px;" id="stspeed"> % 
+  <br />
   <input type="text" id="answer" style="width:100%; font-size:20pt;"><br>
   <div id="hint"></div>
 
   <div id="result">
-  [Your Answer]
-  <div class="ans"></div>
-  <span id="input">1</span><br>
-  [Marking]
-  <div class="mark"></div>
-  [Score]
-  <div id="point"> </div>
-  <br/>
-  <div id="ending">
-    [Correct Answer]
-    <div class="co"></div>
+    <fieldset><legend>[Your Answer]</legend>
+      <div class="ans"></div>
+      <span id="input">1</span>
+    </fieldset>
+
+    <fieldset><legend>[Marking]</legend>
+      <div class="mark"></div>
+    </fieldset>
+
+    <fieldset><legend>[Score]</legend>
+      <div id="point"> </div>
+    </fieldset>
+
+    <div id="ending">
+      <fieldset><legend>[Correct Answer]</legend>
+        <div class="co"></div>
+      </fieldset>
+      <input type="button" value="Next" id="next" style="font-size:20pt;">
+    </div>
   </div>
-  <input type="button" value="Next" id="next" style="font-size:20pt;">
-  <div id="rank"></div>
-</body></html>
+</div>
+
+</body>
+</html>
