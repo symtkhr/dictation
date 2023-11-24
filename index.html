@@ -2,11 +2,22 @@
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="qlist.js"></script>
 <script src="dictat.js"></script>
 <title>Dictation</title>
 <style>
+/* menu */
+fieldset {
+    border:solid #5a8 1px;
+    border-radius:5px;
+    background-color:white;
+}
+fieldset.cat {
+    background:#eed;
+    border-radius:0;
+    border: none;
+    margin-bottom: 10px;
+}
 fieldset.qlist span, #qid {
    width: 24px;
    height: 24px;
@@ -45,6 +56,24 @@ fieldset.qlist span .history {
   padding:2px;
   z-index:2;
 }
+#spectrum {
+  margin-left:20px;
+  display:inline-block;
+  height:20px;
+}
+#spectrum div {
+  width:1px;
+  height:10px;
+  display:inline-block;
+  position:relative;
+}
+#spectrum div span {
+  position:absolute;
+  top:10px; left:-20px; width:40px;
+  font-size:10px;
+  text-align:center;
+}
+/* main - marking */
 span.aft {
    background-color: #ccf;
    color: #ccf;
@@ -88,39 +117,73 @@ span.aft {
   font-size:15pt;
   color:red;
 }
-fieldset {
- border:solid #5a8 1px;
- border-radius:5px;
+@keyframes fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
-#spectrum {
-  margin-left:20px;
-  display:inline-block;
-  height:20px;
+@keyframes slideout {
+    100% { width: 0; }
 }
-#spectrum div {
-  width:1px;
-  height:10px;
-  display:inline-block;
-  position:relative;
+@keyframes slidein {
+    100% { width: 60px; }
 }
-#spectrum div span {
-  position:absolute;
-  top:10px; left:-20px; width:40px;
-  font-size:10px;
-  text-align:center;
+@keyframes landing {
+    100% { top: 0; }
 }
+#todo { display:none; }
+.judge {
+    color:red;position:absolute; top:-20px; font-weight:bold; opacity:.7;
+    display:none;
+}
+.aft {
+    display: none;
+}
+.fadein {
+    opacity: 0;
+    display: block;
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+.slideout {
+    animation-name: slideout;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+}
+.slidein {
+    animation-name: slidein;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+}
+.landing {
+    display: block;
+    animation-name: landing;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+}
+.landing-slow {
+    display: block;
+    animation-name: landing;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
 </style>
 </head>
 
 <body>
 <div id="menu">
   Select a quiz. <div id="spectrum"></div>
+  <div style="float:right;"><button id="make">Make Original</button><button id="dlsc">Download Scores</button></div>
   <hr/>
   <div id="qoption"></div>
+  <footer style="text-align:right;">Released: 2023-11-25</footer>
 </div>
 <div id="main">
   <div style="float:right;">
-    <input type="button" value="Give up" id="giveup">
+    <input type="button" value="Give up" id="giveup" />
   </div>
   <div>
     Type precisely what you hear after pressing the following button.
@@ -156,6 +219,9 @@ fieldset {
     </div>
   </div>
 </div>
-
+<div id="makebox" style="display:none;">
+  Input a sentence for a quiz.
+  <input id="qstrings" style="width:100%;  font-size:20pt;"/>
+</div>
 </body>
 </html>
