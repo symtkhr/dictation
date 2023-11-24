@@ -236,7 +236,7 @@ The weather will be cloudy in the morning, but in the afternoon, it will be sunn
 Is the University near here?", "Yes. Go straight for two blocks and you'll see it on your right.
 // 079. ABC大学はこの近くですか。", "はい。2ブロックまっすぐ行くと、右手に見えます。
 
-'"We will arrive in [Seoul] at five. Please enjoy the flight," the pilot said to the passengers.',
+We will arrive in [Seoul] at five. Please enjoy the flight, the pilot said to the passengers.
 // 080. 「5時にソウルに到着します。どうぞ空の旅をお楽しみください」とパイロットは乗客に言った。
 
 Are you free tonight?", "Sorry, I'm going to have dinner with my aunt and uncle.
@@ -665,7 +665,7 @@ This isn't a normal knife. It's a special one for cutting bread.
 [Mrs. Thomas] is a nurse. She takes care of patients with serious diseases.
 // 222. トーマスさんは看護師です。彼女は重病の患者さんの世話をしています。
 
-New York has many sightseeing sports such as the Statue of Liberty, [Trinity Church], and so on.
+New York has many sightseeing spots such as the Statue of Liberty, [Trinity Church], and so on.
 // 223. ニューヨークには、自由の女神やトリニティ教会などのようなたくさんの観光スポットがあります。
 
 Thanks to your advice, I was able to pass the test. Thank you. － Not at all. I'm glad I could help.
